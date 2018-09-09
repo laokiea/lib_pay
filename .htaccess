@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteBase /
+
+# 组件功能
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteCond %{REQUEST_URI} ^/component\.html$
+RewriteRule ^component\.html(.*)$ lib/component.php$1
+#微信支付回调地址
+RewriteCond %{REQUEST_URI} ^/wepay/notify\.php$
+#RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ lib/component.php?lib_type=pay&sub_type=wepay&call_func=notifyUrl
+#ping++
+RewriteCond %{REQUEST_URI} ^/pingpp/success
+RewriteCond %{QUERY_STRING} (.*?)
+RewriteRule ^(.*)$ lib/component.php?lib_type=pay&sub_type=pingpp&call_func=showSucessResult [QSA]
