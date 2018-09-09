@@ -10,7 +10,7 @@ define('INCLUDE_PATH', LIB_PATH.DS."includes".DS);
 
 //外部环境初始化
 require_once dirname(__DIR__).DS."source".DS."class".DS."class_core.php";
-C::app()->init();$_G["uid"] = 1;
+C::app()->init();
 
 //组件化功能入口
 $lib_config = require_once "lib_config.php";
